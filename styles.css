@@ -138,7 +138,7 @@ ul {
     width: 100%;
     background-color: transparent;
     box-shadow: none;
-    z-index: 1000;
+    z-index: 1001;
     transition: background-color var(--transition-normal), 
                 box-shadow var(--transition-normal),
                 backdrop-filter var(--transition-normal),
@@ -334,11 +334,35 @@ ul {
     height: 3px;
     background-color: var(--color-gris-antracita);
     box-shadow: 0 1px 3px rgba(255, 255, 255, 0.3);
-    transition: all var(--transition-fast);
+    transition: all 0.3s ease;
+    display: block;
 }
 
 .header.scrolled .nav-toggle span {
     background-color: var(--color-blanco-calido);
+    box-shadow: none;
+}
+
+/* Transformación a X cuando está activo */
+.nav-toggle.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-10px);
+}
+
+.nav-toggle.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mantener el color correcto en la X según el estado del header */
+.header.scrolled .nav-toggle.active span {
+    background-color: var(--color-blanco-calido);
+}
+
+.nav-toggle.active span {
     box-shadow: none;
 }
 
@@ -619,6 +643,17 @@ ul {
     background-color: var(--color-beige);
     border-radius: var(--border-radius);
     overflow: hidden;
+    cursor: grab;
+    user-select: none;
+}
+
+.carousel-wrapper:active {
+    cursor: grabbing;
+}
+
+.carousel-container::after {
+    content: '';
+    display: none;
 }
 
 .carousel-slide {
@@ -710,6 +745,11 @@ ul {
     gap: var(--spacing-md);
 }
 
+.resenas-carousel-container::after {
+    content: '';
+    display: none;
+}
+
 .resenas-carousel-wrapper {
     position: relative;
     width: 100%;
@@ -722,6 +762,7 @@ ul {
 .resenas-carousel-wrapper:active {
     cursor: grabbing;
 }
+
 
 .resena-slide {
     position: absolute;
@@ -764,6 +805,58 @@ ul {
     font-style: italic;
     flex-grow: 1;
     font-size: 1.0625rem;
+    position: relative;
+}
+
+.resena-text.truncated {
+    max-height: 195px;
+    overflow: hidden;
+    position: relative;
+}
+
+.resena-text.truncated::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: linear-gradient(to bottom, transparent, var(--color-blanco-calido));
+}
+
+.resena-text.expanded {
+    max-height: none;
+}
+
+.resena-text.expanded::after {
+    display: none;
+}
+
+.leer-mas-btn {
+    display: block;
+    margin-top: 0.75rem;
+    color: var(--color-gris-verdoso);
+    font-weight: 600;
+    font-size: 0.875rem;
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: 0;
+    font-style: normal;
+    text-decoration: underline;
+    transition: color var(--transition-fast);
+    font-family: var(--font-primary);
+    text-align: left;
+    outline: none;
+}
+
+.leer-mas-btn:hover {
+    color: var(--color-amarillo-acento);
+}
+
+.leer-mas-btn:focus-visible {
+    outline: 2px solid var(--color-amarillo-acento);
+    outline-offset: 2px;
 }
 
 .resena-author {
@@ -1079,6 +1172,10 @@ ul {
     }
     
     /* Header */
+    .header-content {
+        padding: 1.5rem var(--spacing-md);
+    }
+    
     .logo-image {
         height: 54px;
     }
@@ -1104,18 +1201,24 @@ ul {
     
     /* Carrusel de reseñas responsive */
     .resenas-carousel-container {
-        gap: var(--spacing-sm);
+        gap: 0.5rem;
     }
     
     .resenas-nav {
-        width: 36px;
-        height: 36px;
-        min-width: 36px;
+        width: 28px;
+        height: 28px;
+        min-width: 28px;
+        opacity: 0.5;
+        border: 1px solid var(--color-gris-verdoso);
     }
     
     .resenas-nav svg {
-        width: 18px;
-        height: 18px;
+        width: 14px;
+        height: 14px;
+    }
+    
+    .resenas-nav:hover {
+        opacity: 1;
     }
     
     .resenas-carousel-wrapper {
@@ -1139,47 +1242,73 @@ ul {
         top: 100%;
         left: 0;
         right: 0;
-        background-color: var(--color-blanco-calido);
+        background-color: var(--color-blanco-calido) !important;
         flex-direction: column;
-        padding: var(--spacing-md);
-        box-shadow: var(--shadow-md);
-        transform: translateY(-100%);
+        padding: 1.25rem var(--spacing-md);
+        box-shadow: 0 8px 16px rgba(46, 48, 46, 0.15);
+        max-height: 0;
+        overflow: hidden;
         opacity: 0;
         visibility: hidden;
-        transition: all var(--transition-normal);
+        transition: max-height 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+    
+    .nav-list.active {
+        max-height: 500px;
+        opacity: 1;
+        visibility: visible;
+        overflow-y: auto;
     }
     
     .nav-list .nav-link {
-        color: var(--color-gris-antracita);
-        text-shadow: none;
+        color: var(--color-gris-antracita) !important;
+        text-shadow: none !important;
+        width: 100%;
+        text-align: left;
+        padding: 0.875rem var(--spacing-sm);
+        margin-bottom: 0.25rem;
+        font-weight: 500;
+        display: block;
     }
     
     .nav-list .nav-link:hover,
     .nav-list .nav-link.active {
-        color: var(--color-gris-antracita);
+        color: var(--color-gris-antracita) !important;
         border-bottom: 2px solid var(--color-amarillo-acento);
+        background-color: rgba(242, 201, 76, 0.15);
     }
     
     /* Sol en menú móvil */
     .nav-list .nav-link.active:not([href="#contacto"])::before {
-        left: 0.25rem;
-        top: 0.25rem;
+        left: 0.75rem;
+        top: 50%;
+        margin-top: -7px;
         opacity: 1;
+    }
+    
+    .nav-list .nav-link.active:not([href="#contacto"]) {
+        padding-left: 2.5rem;
     }
     
     /* Botón de Contacto en menú móvil */
     .nav-list .nav-link[href="#contacto"] {
-        background-color: var(--color-amarillo-acento);
-        color: var(--color-gris-antracita);
-        text-align: center;
-        margin-top: 0.5rem;
-        font-weight: 500;
+        background-color: var(--color-amarillo-acento) !important;
+        color: var(--color-gris-antracita) !important;
+        text-align: left;
+        margin-top: 1rem;
+        margin-bottom: 0;
+        font-weight: 600;
         border-radius: 6px;
+        padding: 0.875rem var(--spacing-sm);
+        border-bottom: none !important;
     }
     
     .nav-list .nav-link[href="#contacto"]:hover,
     .nav-list .nav-link[href="#contacto"].active {
-        background-color: #e0b73c;
+        background-color: #e0b73c !important;
+        color: var(--color-gris-antracita) !important;
     }
     
     .nav-list.active {
@@ -1190,7 +1319,7 @@ ul {
     
     /* Hero */
     .hero {
-        min-height: 90vh;
+        min-height: 100vh;
     }
     
     .hero-title {
@@ -1234,6 +1363,11 @@ ul {
     .container {
         padding: 0 var(--spacing-sm);
     }
+    
+    .header-content {
+        padding: 1.25rem var(--spacing-md);
+    }
+    
     
     .hero-title {
         font-size: 1.875rem;
@@ -1279,6 +1413,26 @@ ul {
         aspect-ratio: 4/3;
     }
     
+    .carousel-container {
+        margin-bottom: 2.5rem;
+    }
+    
+    .carousel-container::after {
+        display: block;
+        content: '← Desliza →';
+        position: absolute;
+        bottom: -2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.75rem;
+        color: var(--color-gris-verdoso);
+        opacity: 0.4;
+        pointer-events: none;
+        letter-spacing: 1px;
+        font-weight: 500;
+        z-index: 10;
+    }
+    
     .carousel-indicators {
         gap: 0.75rem;
     }
@@ -1293,16 +1447,28 @@ ul {
         height: 16px;
     }
     
-    /* Carrusel reseñas en móvil pequeño */
+    .carousel-container::after {
+        bottom: -1.75rem;
+    }
+    
+    /* Carrusel reseñas en móvil pequeño - minimalistas */
     .resenas-nav {
-        width: 32px;
-        height: 32px;
-        min-width: 32px;
+        width: 24px;
+        height: 24px;
+        min-width: 24px;
+        opacity: 0.4;
+        background-color: transparent;
+        border: 1px solid var(--color-gris-verdoso);
     }
     
     .resenas-nav svg {
-        width: 16px;
-        height: 16px;
+        width: 12px;
+        height: 12px;
+    }
+    
+    .resenas-nav:hover {
+        opacity: 0.8;
+        background-color: rgba(111, 124, 107, 0.1);
     }
     
     .resenas-carousel-wrapper {
@@ -1311,6 +1477,41 @@ ul {
     
     .resena-text {
         font-size: 0.875rem;
+    }
+    
+    .resena-text.truncated {
+        max-height: 165px;
+    }
+    
+    .resena-text.truncated::after {
+        height: 35px;
+    }
+    
+    .resenas-carousel-container {
+        margin-bottom: 2.5rem;
+    }
+    
+    .resenas-carousel-container::after {
+        display: block;
+        content: '← Desliza →';
+        position: absolute;
+        bottom: -2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.75rem;
+        color: var(--color-gris-verdoso);
+        opacity: 0.4;
+        pointer-events: none;
+        letter-spacing: 1px;
+        font-weight: 500;
+    }
+    
+    .resena-card {
+        min-height: 490px;
+    }
+    
+    .resenas-carousel-wrapper {
+        min-height: 550px;
     }
     
     .resena-stars {

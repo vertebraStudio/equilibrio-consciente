@@ -386,6 +386,80 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Iniciar el carrusel
     startCarousel();
+
+    // Funcionalidad de Drag/Swipe para carrusel de fotos
+    let startXFotos = 0;
+    let isDraggingFotos = false;
+    let hasMovedFotos = false;
+
+    if (carouselContainer) {
+        // Mouse events
+        carouselContainer.addEventListener('mousedown', (e) => {
+            startXFotos = e.clientX;
+            isDraggingFotos = true;
+            hasMovedFotos = false;
+        });
+
+        carouselContainer.addEventListener('mousemove', (e) => {
+            if (isDraggingFotos) {
+                hasMovedFotos = true;
+            }
+        });
+
+        carouselContainer.addEventListener('mouseup', (e) => {
+            if (isDraggingFotos && hasMovedFotos) {
+                const endX = e.clientX;
+                const diff = startXFotos - endX;
+                
+                // Si el movimiento es mayor a 50px, cambia de slide
+                if (Math.abs(diff) > 50) {
+                    if (diff > 0) {
+                        // Swipe left -> siguiente
+                        nextSlide();
+                    } else {
+                        // Swipe right -> anterior
+                        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                        showSlide(currentSlide);
+                    }
+                    // Reiniciar el auto-play
+                    stopCarousel();
+                    startCarousel();
+                }
+            }
+            isDraggingFotos = false;
+            hasMovedFotos = false;
+        });
+
+        carouselContainer.addEventListener('mouseleave', () => {
+            isDraggingFotos = false;
+            hasMovedFotos = false;
+        });
+
+        // Touch events para móviles
+        carouselContainer.addEventListener('touchstart', (e) => {
+            startXFotos = e.touches[0].clientX;
+        });
+
+        carouselContainer.addEventListener('touchend', (e) => {
+            const endX = e.changedTouches[0].clientX;
+            const diff = startXFotos - endX;
+            
+            // Si el movimiento es mayor a 50px, cambia de slide
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) {
+                    // Swipe left -> siguiente
+                    nextSlide();
+                } else {
+                    // Swipe right -> anterior
+                    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                    showSlide(currentSlide);
+                }
+                // Reiniciar el auto-play
+                stopCarousel();
+                startCarousel();
+            }
+        });
+    }
 });
 
 // ===================================
@@ -432,6 +506,71 @@ document.addEventListener('DOMContentLoaded', () => {
     if (prevBtn) {
         prevBtn.addEventListener('click', prevResena);
     }
+
+    // Funcionalidad "Leer más" para móvil
+    function setupLeerMas() {
+        const isMobile = window.innerWidth <= 480;
+        
+        resenasSlides.forEach(slide => {
+            const textElement = slide.querySelector('.resena-text');
+            if (!textElement) return;
+            
+            // Remover botón existente si hay
+            const existingBtn = slide.querySelector('.leer-mas-btn');
+            if (existingBtn) {
+                existingBtn.remove();
+            }
+            
+            // Resetear clases
+            textElement.classList.remove('truncated', 'expanded');
+            
+            if (isMobile) {
+                // Verificar si el contenido es más alto que el límite
+                const tempDiv = document.createElement('div');
+                tempDiv.style.cssText = 'position: absolute; visibility: hidden; width: ' + textElement.offsetWidth + 'px;';
+                tempDiv.innerHTML = textElement.innerHTML;
+                document.body.appendChild(tempDiv);
+                const fullHeight = tempDiv.offsetHeight;
+                document.body.removeChild(tempDiv);
+                
+                if (fullHeight > 170) {
+                    textElement.classList.add('truncated');
+                    
+                    // Crear botón "Leer más"
+                    const btnLeerMas = document.createElement('button');
+                    btnLeerMas.className = 'leer-mas-btn';
+                    btnLeerMas.textContent = 'Leer más';
+                    btnLeerMas.setAttribute('aria-expanded', 'false');
+                    
+                    btnLeerMas.addEventListener('click', function() {
+                        if (textElement.classList.contains('truncated')) {
+                            textElement.classList.remove('truncated');
+                            textElement.classList.add('expanded');
+                            this.textContent = 'Leer menos';
+                            this.setAttribute('aria-expanded', 'true');
+                        } else {
+                            textElement.classList.add('truncated');
+                            textElement.classList.remove('expanded');
+                            this.textContent = 'Leer más';
+                            this.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+                    
+                    textElement.parentNode.insertBefore(btnLeerMas, textElement.nextSibling);
+                }
+            }
+        });
+    }
+    
+    // Ejecutar al cargar
+    setupLeerMas();
+    
+    // Reejecutar en resize
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(setupLeerMas, 250);
+    });
 
     // Funcionalidad de Drag/Swipe
     if (carouselWrapper) {
