@@ -167,7 +167,7 @@ ul {
 }
 
 .logo-image {
-    height: 70px;
+    height: 95px;
     width: auto;
     transition: filter var(--transition-normal);
 }
@@ -1185,7 +1185,7 @@ ul {
     }
     
     .logo-image {
-        height: 54px;
+        height: 70px;
     }
     
     .logo h1 {
