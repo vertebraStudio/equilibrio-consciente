@@ -485,9 +485,9 @@ ul {
 
 .sobre-mi-grid {
     display: grid;
-    grid-template-columns: 1fr 1.5fr;
+    grid-template-columns: 1fr 1.2fr;
     gap: var(--spacing-xl);
-    align-items: center;
+    align-items: stretch;
 }
 
 .sobre-mi-image {
@@ -496,7 +496,8 @@ ul {
 
 .image-placeholder {
     width: 100%;
-    aspect-ratio: 1;
+    height: 100%;
+    min-height: 400px;
     border-radius: var(--border-radius);
     overflow: hidden;
     background-color: var(--color-fondo-terciario);
