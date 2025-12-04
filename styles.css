@@ -538,7 +538,7 @@ ul {
     font-size: 1.0625rem;
     color: var(--color-texto-principal);
     line-height: 1.8;
-    text-align: center;
+    text-align: left;
 }
 
 .sobre-mi-extra p:last-child {
