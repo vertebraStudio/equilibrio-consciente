@@ -1243,13 +1243,13 @@ ul {
 }
 
 .whatsapp-float.on-footer {
-    background-color: var(--color-acento);
-    color: var(--color-texto-principal);
+    background-color: var(--color-blanco);
+    color: var(--color-azul-nav);
 }
 
 .whatsapp-float.on-footer:hover {
-    background-color: var(--color-blanco);
-    color: var(--color-azul-nav);
+    background-color: var(--color-acento);
+    color: var(--color-texto-principal);
 }
 
 .whatsapp-float svg {
