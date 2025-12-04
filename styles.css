@@ -417,6 +417,7 @@ ul {
     color: var(--color-texto-principal);
     margin-bottom: var(--spacing-sm);
     line-height: 1.2;
+    white-space: nowrap;
 }
 
 .hero-subtitle {
@@ -1424,11 +1425,11 @@ ul {
     }
     
     .hero-title {
-        font-size: 2.75rem;
+        font-size: 2.25rem;
     }
     
     .hero-subtitle {
-        font-size: 1.375rem;
+        font-size: 1.25rem;
     }
     
     .hero-description {
@@ -1471,7 +1472,7 @@ ul {
     
     
     .hero-title {
-        font-size: 2.25rem;
+        font-size: 1.75rem;
     }
     
     .section-title {
