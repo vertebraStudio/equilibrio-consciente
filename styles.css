@@ -1074,6 +1074,8 @@ ul {
     max-width: 200px;
     height: auto;
     object-fit: contain;
+    /* Filtro para convertir amarillo a azul */
+    filter: brightness(0) saturate(100%) invert(40%) sepia(15%) saturate(700%) hue-rotate(160deg) brightness(95%) contrast(90%);
 }
 
 .contacto-horario .contacto-icon {
