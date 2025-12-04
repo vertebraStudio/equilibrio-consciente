@@ -276,14 +276,14 @@ ul {
 .nav-link:hover,
 .nav-link.active {
     color: var(--color-texto-principal);
-    border-bottom: 2px solid var(--color-acento);
+    border-bottom: 2px solid var(--color-texto-principal);
     text-shadow: none;
 }
 
 .header.scrolled .nav-link:hover,
 .header.scrolled .nav-link.active {
-    color: var(--color-acento);
-    border-bottom: 2px solid var(--color-acento);
+    color: var(--color-blanco);
+    border-bottom: 2px solid var(--color-blanco);
 }
 
 /* Botón especial de Contacto */
@@ -1373,8 +1373,8 @@ ul {
     .nav-list .nav-link:hover,
     .nav-list .nav-link.active {
         color: var(--color-texto-principal) !important;
-        border-bottom: 2px solid var(--color-acento);
-        background-color: rgba(242, 227, 153, 0.2);
+        border-bottom: 2px solid var(--color-texto-principal);
+        background-color: rgba(74, 107, 124, 0.1);
     }
     
     /* Sol en menú móvil */
