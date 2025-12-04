@@ -173,10 +173,13 @@ ul {
     height: 42px;
     width: auto;
     transition: filter var(--transition-normal);
+    /* Filtro para convertir amarillo a azul */
+    filter: brightness(0) saturate(100%) invert(40%) sepia(15%) saturate(700%) hue-rotate(160deg) brightness(95%) contrast(90%);
 }
 
 .header.scrolled .logo-image {
-    /* Mantener el logo con sus colores originales */
+    /* Mantener el logo amarillo original durante scroll */
+    filter: none;
 }
 
 .logo-text {
