@@ -109,7 +109,7 @@ ul {
 .divider {
     width: 60px;
     height: 3px;
-    background-color: var(--color-acento);
+    background-color: var(--color-azul-nav);
     margin-bottom: var(--spacing-md);
 }
 
