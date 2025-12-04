@@ -586,12 +586,12 @@ ul {
     width: 44px;
     height: 44px;
     min-width: 44px;
-    background-color: var(--color-acento);
+    background-color: var(--color-azul-nav);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--color-texto-principal);
+    color: var(--color-blanco);
     transition: all var(--transition-fast);
 }
 
@@ -612,8 +612,8 @@ ul {
 }
 
 .info-item-link:hover .info-icon {
-    background-color: var(--color-acento-hover);
-    box-shadow: 0 4px 12px rgba(242, 227, 153, 0.4);
+    background-color: var(--color-texto-principal);
+    box-shadow: 0 4px 12px rgba(74, 107, 124, 0.3);
 }
 
 /* ===================================
