@@ -189,7 +189,7 @@ ul {
 
 .logo h1 {
     font-family: 'Merriweather', serif;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: var(--color-texto-principal);
     text-shadow: 0 1px 3px rgba(255, 255, 255, 0.3);
@@ -1282,11 +1282,11 @@ ul {
     }
     
     .logo h1 {
-        font-size: 1rem;
+        font-size: 1.125rem;
     }
     
     .logo-subtitle {
-        font-size: 0.65rem;
+        font-size: 0.7rem;
     }
     
     .nav-toggle {
