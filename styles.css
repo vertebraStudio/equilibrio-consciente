@@ -1116,6 +1116,14 @@ ul {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.footer-logo {
+    height: 50px;
+    width: auto;
+    margin-bottom: 0.75rem;
+    /* Filtro para azul más oscuro */
+    filter: brightness(0) saturate(100%) invert(20%) sepia(20%) saturate(600%) hue-rotate(170deg) brightness(90%) contrast(95%);
+}
+
 .footer-brand h3 {
     font-family: 'Amore Christmas', cursive;
     font-size: 1.75rem;
