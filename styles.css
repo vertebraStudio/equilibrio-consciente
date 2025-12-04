@@ -169,7 +169,7 @@ ul {
 }
 
 .logo-image {
-    height: 70px;
+    height: 55px;
     width: auto;
     transition: filter var(--transition-normal);
 }
@@ -1036,7 +1036,7 @@ ul {
 
 .contacto-logo {
     width: 100%;
-    max-width: 180px;
+    max-width: 140px;
     height: auto;
     object-fit: contain;
 }
@@ -1217,7 +1217,7 @@ ul {
     }
     
     .logo-image {
-        height: 54px;
+        height: 42px;
     }
     
     .logo h1 {
