@@ -1116,22 +1116,27 @@ ul {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 .footer-logo {
-    height: 50px;
+    height: 45px;
     width: auto;
-    margin-bottom: 0.75rem;
     /* Filtro para azul más oscuro */
     filter: brightness(0) saturate(100%) invert(20%) sepia(20%) saturate(600%) hue-rotate(170deg) brightness(90%) contrast(95%);
 }
 
-.footer-brand h3 {
+.footer-brand-text h3 {
     font-family: 'Amore Christmas', cursive;
     font-size: 1.75rem;
     font-weight: 400;
     margin-bottom: 0.25rem;
 }
 
-.footer-brand p {
+.footer-brand-text p {
     font-size: 0.9375rem;
     opacity: 0.8;
     margin: 0;
