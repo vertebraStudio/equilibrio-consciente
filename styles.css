@@ -1005,11 +1005,11 @@ ul {
     width: 48px;
     height: 48px;
     min-width: 48px;
-    color: var(--color-acento);
+    color: var(--color-azul-nav);
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(242, 227, 153, 0.25);
+    background-color: rgba(74, 107, 124, 0.12);
     border-radius: 50%;
 }
 
@@ -1049,19 +1049,22 @@ ul {
 
 .contacto-horario {
     text-align: center;
-    padding: var(--spacing-lg);
+    padding: var(--spacing-xl);
     background-color: var(--color-blanco);
-    border-radius: var(--border-radius);
+    border-radius: 50%;
     border: 2px solid var(--color-acento);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 200px;
+    height: 200px;
+    margin: auto;
 }
 
 .contacto-logo {
     width: 100%;
-    max-width: 100px;
+    max-width: 140px;
     height: auto;
     object-fit: contain;
 }
