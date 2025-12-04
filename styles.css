@@ -176,7 +176,7 @@ ul {
 }
 
 .header.scrolled .logo-image {
-    filter: brightness(0) invert(1);
+    /* Mantener el logo con sus colores originales */
 }
 
 .logo-text {
@@ -286,11 +286,11 @@ ul {
 
 /* Botón especial de Contacto */
 .nav-link[href="#contacto"] {
-    background-color: var(--color-acento);
+    background-color: transparent;
     color: var(--color-texto-principal);
     padding: 0.5rem 1.125rem;
     border-radius: 6px;
-    border-bottom: 2px solid var(--color-acento);
+    border: 2px solid var(--color-acento);
     text-shadow: none;
     font-weight: 500;
     margin-left: 0.5rem;
@@ -298,20 +298,21 @@ ul {
 
 .nav-link[href="#contacto"]:hover,
 .nav-link[href="#contacto"].active {
-    background-color: var(--color-acento-hover);
-    border-bottom: 2px solid var(--color-acento-hover);
+    background-color: var(--color-acento);
+    border: 2px solid var(--color-acento);
 }
 
 .header.scrolled .nav-link[href="#contacto"] {
-    background-color: var(--color-acento);
-    color: var(--color-texto-principal);
-    border-bottom: 2px solid var(--color-acento);
+    background-color: transparent;
+    color: var(--color-blanco);
+    border: 2px solid var(--color-acento);
 }
 
 .header.scrolled .nav-link[href="#contacto"]:hover,
 .header.scrolled .nav-link[href="#contacto"].active {
-    background-color: var(--color-acento-hover);
-    border-bottom: 2px solid var(--color-acento-hover);
+    background-color: var(--color-acento);
+    color: var(--color-texto-principal);
+    border: 2px solid var(--color-acento);
 }
 
 /* Toggle menu para móvil */
@@ -1354,7 +1355,7 @@ ul {
     
     /* Botón de Contacto en menú móvil */
     .nav-list .nav-link[href="#contacto"] {
-        background-color: var(--color-acento) !important;
+        background-color: transparent !important;
         color: var(--color-texto-principal) !important;
         text-align: left;
         margin-top: 1rem;
@@ -1362,12 +1363,12 @@ ul {
         font-weight: 600;
         border-radius: 6px;
         padding: 0.875rem var(--spacing-sm);
-        border-bottom: none !important;
+        border: 2px solid var(--color-acento) !important;
     }
     
     .nav-list .nav-link[href="#contacto"]:hover,
     .nav-list .nav-link[href="#contacto"].active {
-        background-color: var(--color-acento-hover) !important;
+        background-color: var(--color-acento) !important;
         color: var(--color-texto-principal) !important;
     }
     
