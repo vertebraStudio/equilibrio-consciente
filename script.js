@@ -78,6 +78,22 @@ document.addEventListener('DOMContentLoaded', () => {
             header.classList.remove('scrolled');
         }
         
+        // Detectar si el botón de WhatsApp está sobre el footer
+        const whatsappBtn = document.querySelector('.whatsapp-float');
+        const footer = document.querySelector('.footer');
+        
+        if (whatsappBtn && footer) {
+            const whatsappRect = whatsappBtn.getBoundingClientRect();
+            const footerRect = footer.getBoundingClientRect();
+            
+            // Si el botón de WhatsApp está sobre el footer
+            if (whatsappRect.bottom > footerRect.top) {
+                whatsappBtn.classList.add('on-footer');
+            } else {
+                whatsappBtn.classList.remove('on-footer');
+            }
+        }
+        
         lastScroll = currentScroll;
     });
 

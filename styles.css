@@ -1242,6 +1242,16 @@ ul {
     box-shadow: var(--shadow-lg);
 }
 
+.whatsapp-float.on-footer {
+    background-color: var(--color-acento);
+    color: var(--color-texto-principal);
+}
+
+.whatsapp-float.on-footer:hover {
+    background-color: var(--color-blanco);
+    color: var(--color-azul-nav);
+}
+
 .whatsapp-float svg {
     width: 36px;
     height: 36px;
