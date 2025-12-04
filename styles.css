@@ -3,15 +3,16 @@
    =================================== */
 
 :root {
-    /* Paleta de colores - Minimalista y calmada */
+    /* Paleta de colores - Minimalista y calmada con tonos azules */
     --color-acento: #F2E399;
     --color-acento-hover: #E8D88A;
-    --color-fondo-principal: #FDFCFA;
-    --color-fondo-secundario: #F5F7F9;
-    --color-fondo-terciario: #EEF2F5;
-    --color-texto-principal: #3D4449;
-    --color-texto-secundario: #6B7780;
+    --color-fondo-principal: #FAFCFD;
+    --color-fondo-secundario: #EFF5F8;
+    --color-fondo-terciario: #E4EDF2;
+    --color-texto-principal: #2C3E50;
+    --color-texto-secundario: #5D7A8C;
     --color-blanco: #FFFFFF;
+    --color-azul-nav: #4A6B7C;
     
     /* Tipografía */
     --font-primary: 'Merriweather', serif;
@@ -27,9 +28,9 @@
     
     /* Bordes y sombras */
     --border-radius: 8px;
-    --shadow-sm: 0 2px 8px rgba(61, 68, 73, 0.06);
-    --shadow-md: 0 4px 16px rgba(61, 68, 73, 0.10);
-    --shadow-lg: 0 8px 24px rgba(61, 68, 73, 0.12);
+    --shadow-sm: 0 2px 8px rgba(44, 62, 80, 0.06);
+    --shadow-md: 0 4px 16px rgba(44, 62, 80, 0.10);
+    --shadow-lg: 0 8px 24px rgba(44, 62, 80, 0.12);
     
     /* Transiciones */
     --transition-fast: 0.2s ease;
@@ -148,10 +149,10 @@ ul {
 }
 
 .header.scrolled {
-    background-color: rgba(107, 119, 128, 0.9);
+    background-color: rgba(74, 107, 124, 0.92);
     backdrop-filter: blur(12px) saturate(180%);
     -webkit-backdrop-filter: blur(12px) saturate(180%);
-    box-shadow: 0 4px 16px rgba(61, 68, 73, 0.12);
+    box-shadow: 0 4px 16px rgba(44, 62, 80, 0.12);
     border-bottom: 1px solid rgba(242, 227, 153, 0.3);
 }
 
@@ -487,7 +488,7 @@ ul {
     display: grid;
     grid-template-columns: 1fr 1.2fr;
     gap: var(--spacing-xl);
-    align-items: center;
+    align-items: stretch;
 }
 
 .sobre-mi-image {
@@ -552,7 +553,7 @@ ul {
 .info-destacada {
     background-color: var(--color-fondo-terciario);
     padding: var(--spacing-lg) 0;
-    border-bottom: 1px solid rgba(107, 119, 128, 0.1);
+    border-bottom: 1px solid rgba(74, 107, 124, 0.1);
 }
 
 .info-grid {
@@ -1093,7 +1094,7 @@ ul {
    =================================== */
 
 .footer {
-    background-color: #5C6670;
+    background-color: var(--color-azul-nav);
     color: var(--color-blanco);
     padding: var(--spacing-xl) 0 var(--spacing-md);
 }
@@ -1190,7 +1191,7 @@ ul {
     right: 30px;
     width: 60px;
     height: 60px;
-    background-color: #5C6670;
+    background-color: var(--color-azul-nav);
     color: white;
     border-radius: 50%;
     display: flex;
@@ -1527,7 +1528,7 @@ ul {
     
     .resenas-nav:hover {
         opacity: 0.8;
-        background-color: rgba(107, 119, 128, 0.1);
+        background-color: rgba(74, 107, 124, 0.1);
     }
     
     .resenas-carousel-wrapper {
