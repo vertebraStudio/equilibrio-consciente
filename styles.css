@@ -187,7 +187,7 @@ ul {
 
 .logo h1 {
     font-family: 'Amore Christmas', cursive;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 400;
     color: var(--color-texto-principal);
     text-shadow: 0 1px 3px rgba(255, 255, 255, 0.3);
@@ -1241,11 +1241,11 @@ ul {
     }
     
     .logo h1 {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
     }
     
     .logo-subtitle {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
     }
     
     .nav-toggle {
