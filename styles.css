@@ -571,18 +571,19 @@ ul {
 
 .info-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(2, minmax(260px, 1fr));
     gap: var(--spacing-lg);
     align-items: center;
     max-width: 1100px;
     margin: 0 auto;
+    padding: var(--spacing-sm) 0;
 }
 
 .info-item {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .info-icon {
@@ -620,6 +621,68 @@ ul {
 }
 
 /* ===================================
+   FORMACIÓN ACADÉMICA
+   =================================== */
+
+.formacion-academica {
+    background-color: var(--color-blanco);
+}
+
+.formacion-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+@media (max-width: 768px) {
+    .formacion-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.formacion-card {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    background-color: var(--color-blanco);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-md);
+    box-shadow: var(--shadow-md);
+}
+
+.formacion-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--color-azul-nav);
+    display: grid;
+    place-items: center;
+    color: var(--color-blanco);
+    flex-shrink: 0;
+}
+
+.formacion-icon svg {
+    width: 28px;
+    height: 28px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.6;
+}
+
+.formacion-textos h3 {
+    font-size: 1.1rem;
+    color: var(--color-texto-principal);
+    margin-bottom: 0.25rem;
+}
+
+.formacion-textos p {
+    color: var(--color-texto-secundario);
+    font-size: 0.98rem;
+    margin: 0;
+}
+
+/* ===================================
    SERVICIOS
    =================================== */
 
@@ -641,6 +704,9 @@ ul {
     box-shadow: var(--shadow-sm);
     transition: all var(--transition-normal);
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .servicio-card:hover {
@@ -677,7 +743,21 @@ ul {
     font-weight: 700;
     color: var(--color-texto-principal);
     margin-bottom: var(--spacing-md);
+    margin-top: auto;
 }
+
+.servicio-duracion {
+    font-size: 1rem;
+    color: var(--color-texto-secundario);
+    margin-left: 0.35rem;
+    font-weight: 600;
+}
+
+.servicio-card .btn {
+    align-self: center;
+    margin-top: var(--spacing-sm);
+}
+
 
 /* ===================================
    GALERÍA - CARRUSEL
@@ -1266,6 +1346,86 @@ ul {
    RESPONSIVE
    =================================== */
 
+@media (max-width: 1024px) {
+    /* Header / menú hamburguesa en tablet y móvil */
+    .nav-toggle {
+        display: flex;
+    }
+
+    .nav-list {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--color-blanco) !important;
+        flex-direction: column;
+        padding: 1.25rem var(--spacing-md);
+        box-shadow: 0 8px 16px rgba(46, 48, 46, 0.15);
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        transition: max-height 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+
+    .nav-list.active {
+        max-height: 500px;
+        opacity: 1;
+        visibility: visible;
+        overflow-y: auto;
+    }
+
+    .nav-list .nav-link {
+        color: var(--color-texto-principal) !important;
+        text-shadow: none !important;
+        width: 100%;
+        text-align: left;
+        padding: 0.875rem var(--spacing-sm);
+        margin-bottom: 0.25rem;
+        font-weight: 500;
+        display: block;
+    }
+
+    .nav-list .nav-link:hover,
+    .nav-list .nav-link.active {
+        color: var(--color-texto-principal) !important;
+        border-bottom: 2px solid var(--color-texto-principal);
+        background-color: rgba(74, 107, 124, 0.1);
+    }
+
+    /* Sol en menú móvil/tablet */
+    .nav-list .nav-link.active:not([href="#contacto"])::before {
+        left: 0.75rem;
+        top: 50%;
+        margin-top: -7px;
+        opacity: 1;
+    }
+
+    .nav-list .nav-link.active:not([href="#contacto"]) {
+        padding-left: 2.5rem;
+    }
+
+    /* Botón de Contacto en menú móvil/tablet */
+    .nav-list .nav-link[href="#contacto"] {
+        background-color: transparent !important;
+        color: var(--color-texto-principal) !important;
+        border: 1px solid var(--color-texto-principal);
+        padding: 0.875rem var(--spacing-sm);
+        text-align: center;
+        border-radius: 6px;
+        margin-top: 0.5rem;
+    }
+
+    .nav-list .nav-link[href="#contacto"].active {
+        color: var(--color-azul-nav) !important;
+        background-color: var(--color-acento) !important;
+        border-color: var(--color-azul-nav) !important;
+    }
+
+}
+
 @media (max-width: 768px) {
     :root {
         --font-size-base: 15px;
@@ -1298,7 +1458,15 @@ ul {
     .info-grid {
         grid-template-columns: 1fr;
         gap: var(--spacing-md);
-        max-width: 100%;
+        padding: 0;
+    }
+
+    /* Estado hover/activo del botón Contacto en menú móvil */
+    .nav-list .nav-link[href="#contacto"]:hover,
+    .nav-list .nav-link[href="#contacto"].active {
+        background-color: var(--color-acento) !important;
+        color: var(--color-azul-nav) !important;
+        border-color: var(--color-azul-nav) !important;
     }
     
     /* Carrusel de reseñas responsive */
