@@ -571,7 +571,7 @@ ul {
 
 .info-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(260px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: var(--spacing-lg);
     align-items: center;
     max-width: 1100px;
@@ -1422,6 +1422,12 @@ ul {
         color: var(--color-azul-nav) !important;
         background-color: var(--color-acento) !important;
         border-color: var(--color-azul-nav) !important;
+    }
+
+    /* Info grid en tablet - 2 columnas */
+    .info-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
     }
 
 }
